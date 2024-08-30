@@ -1,3 +1,19 @@
+export type HeaderNavQuery = {
+    navigationCollection: {
+        items: {
+            name: string
+            linksCollection: {
+                items: {
+                    link: string
+                    label: string
+                }[]
+            }
+        }[]
+    }
+}
+
+
+
 export type LogoWallQuery = {
     assetCollection: {
         items: {

@@ -1,5 +1,39 @@
-import { HeroQuery, LogoWallQuery } from "@/types";
+import "server-only";
+import { HeaderNavQuery, HeroQuery, LogoWallQuery } from "@/types";
 import { contentGqlFetcher } from "./fetch";
+
+
+export const getContentForHeaderNav = async () => {
+    const query = `#graphql
+    query NavigationCollection($where: NavigationFilter) {
+        navigationCollection(where: $where) {
+            items {
+            name
+            linksCollection {
+                items {
+                link
+                label
+                }
+            }
+            }
+        }
+        }
+        `
+
+    const data = await contentGqlFetcher<HeaderNavQuery>({
+    query,
+    variables: {
+        where: {
+            name: "Header"
+         }
+        }
+    })
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
+    }
+    return data;    
+};
 
 export const getContentForLogoWall = async () => {
     const query = `#graphql
@@ -22,7 +56,7 @@ export const getContentForLogoWall = async () => {
             }
           }
     })
-    
+
     if (!data) {
         throw new Error('Failed to fetch API, cant get content');
     }

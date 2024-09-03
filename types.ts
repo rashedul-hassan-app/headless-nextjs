@@ -1,3 +1,23 @@
+export type CustomerPostQuery = {
+    customerPostCollection:{
+        items: {
+            title: string
+            slug: string
+            body: {
+                json: JSON
+            }
+            customer: {
+                logo: {
+                    height: number
+                    url: string
+                    width: number
+                }
+                name: string
+            }
+        }[]
+    }
+};
+
 export type HeaderNavQuery = {
     navigationCollection: {
         items: {

@@ -126,10 +126,10 @@ export const getContentForLogoWall = async () => {
     return data;
 }
 
-export const getContentForHero = async () => {
+export const getContentForHero = async (isDraft = false) => {
     const query = `#graphql
     query HeroCollection {
-        heroCollection {
+        heroCollection(preview: ${isDraft ? "true" : "false"}) {
             items {
             title
             preTitle
@@ -145,7 +145,7 @@ export const getContentForHero = async () => {
     }
     `
 
-    const data = await contentGqlFetcher<HeroQuery>({query})
+    const data = await contentGqlFetcher<HeroQuery>({query, preview: isDraft})
     
 
     if (!data) {

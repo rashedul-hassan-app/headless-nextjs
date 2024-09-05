@@ -17,7 +17,7 @@ export default function About() {
       <Story />
       <Team />
       <Recruitment />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Cta />
     </>
   )

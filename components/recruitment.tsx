@@ -4,6 +4,11 @@ import Recruitment02 from '@/public/images/recruitment-02.jpg'
 import Recruitment03 from '@/public/images/recruitment-03.jpg'
 import Recruitment04 from '@/public/images/recruitment-04.jpg'
 
+
+import fb2 from '@/public/images/wbc/fb2.jpg';
+import fb3 from '@/public/images/wbc/fb3.jpg';
+import fb4 from '@/public/images/wbc/fb4.jpg';
+import fb5 from '@/public/images/wbc/fb5.jpg';
 interface Item {
   area: string
   positions: {
@@ -79,7 +84,7 @@ export default function Recruitment() {
   ]
 
   return (
-    <section className="relative">
+    <section id="contact_and_venue" className="relative">
 
       {/* Blurred shape */}
       <div className="absolute top-0 -translate-y-1/3 left-1/2 -translate-x-1/2 ml-24 blur-2xl opacity-50 pointer-events-none -z-10" aria-hidden="true">
@@ -115,8 +120,12 @@ export default function Recruitment() {
                   </g>
                 </svg>
               </div>
-              <div className="font-bold text-slate-100 mb-1">Passionate</div>
-              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
+              <div className="font-bold text-slate-400 mb-1">Mondays</div>
+              <div className="font-bold text-slate-100 mb-1">7.45 - 10.00pm</div>
+              <p className="text-sm text-slate-400">Westfield Academy
+                Tolpits Lane
+                Watford
+                WD18 6NS</p>
             </div>
             {/* Block #2 */}
             <div className="text-center p-5">
@@ -125,8 +134,12 @@ export default function Recruitment() {
                   <path className="fill-slate-200" d="M9.423 12.278H.87L11.614.458l-1.037 7.264h8.553L8.386 19.542l1.037-7.264Zm-6.293-1h7.447l-.74 5.18 7.033-7.736H9.423l.74-5.18-7.033 7.736Z" opacity=".8" />
                 </svg>
               </div>
-              <div className="font-bold text-slate-100 mb-1">Energetic</div>
-              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
+              <div className="font-bold text-slate-400 mb-1">Tuesdays</div>
+              <div className="font-bold text-slate-100 mb-1">8 - 10.15pm</div>
+              <p className="text-sm text-slate-400">The Grange Academy
+                London Road
+                Bushey
+                WD23 3AA</p>
             </div>
             {/* Block #3 */}
             <div className="text-center p-5">
@@ -138,8 +151,12 @@ export default function Recruitment() {
                   </g>
                 </svg>
               </div>
-              <div className="font-bold text-slate-100 mb-1">Achiever</div>
-              <p className="text-sm text-slate-400">You are passionate about digital products of any kind and are a builder at heart.</p>
+              <div className="font-bold text-slate-400 mb-1">Thursdays</div>
+              <div className="font-bold text-slate-100 mb-1">8 - 10.15pm</div>
+              <p className="text-sm text-slate-400">The Grange Academy
+                London Road
+                Bushey
+                WD23 3AA</p>
             </div>
           </div>
 
@@ -149,10 +166,10 @@ export default function Recruitment() {
       {/* Images */}
       <div className="max-w-[1440px] mx-auto px-4 md:px-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 md:-mx-5">
-          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment01} width={352} height={220} alt="Recruitment 01" />
-          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment02} width={352} height={220} alt="Recruitment 02" />
-          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment03} width={352} height={220} alt="Recruitment 03" />
-          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={Recruitment04} width={352} height={220} alt="Recruitment 04" />
+          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={fb2} width={352} height={220} alt="Recruitment 01" />
+          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={fb3} width={352} height={220} alt="Recruitment 02" />
+          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={fb4} width={352} height={220} alt="Recruitment 03" />
+          <Image className="w-full aspect-[16/10] object-cover rounded-lg" src={fb5} width={352} height={220} alt="Recruitment 04" />
         </div>
       </div>
 
@@ -172,7 +189,7 @@ export default function Recruitment() {
           </svg>
         </div>
 
-        <div className="max-w-3xl mx-auto py-12 md:py-20">
+        {/* <div className="max-w-3xl mx-auto py-12 md:py-20">
           <h3 className="h3 inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-8 md:pb-16">Open positions</h3>
           <div className="space-y-8">
 
@@ -193,7 +210,7 @@ export default function Recruitment() {
             ))}
 
           </div>
-        </div>
+        </div> */}
       </div>
 
     </section>

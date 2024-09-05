@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Stellar',
-  description: 'Page description',
+  title: 'Home - WBC',
+  description: 'Best club in watford',
 }
 
 import Hero from '@/components/hero'
@@ -21,12 +21,12 @@ export default function Home() {
       <LogoWall />
       <Features />
       <Features02 />
-      <Features03 />
-      <TestimonialsCarousel />
-      <Features04 />
-      <Pricing />
+      {/* <Features03 /> */}
+      {/* <TestimonialsCarousel /> */}
+      {/* <Features04 /> */}
+      {/* <Pricing /> */}
       <Testimonials />
-      <Cta />
+      {/* <Cta /> */}
     </>
   )
 }

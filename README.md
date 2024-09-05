@@ -1,3 +1,4 @@
+Template
 [![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)](https://frontendmasters.com/courses/headless-cms-nextjs/)
 
 This repo is a companion to the [Headless CMSs course](https://frontendmasters.com/courses/headless-cms-nextjs/) on Frontend Masters.

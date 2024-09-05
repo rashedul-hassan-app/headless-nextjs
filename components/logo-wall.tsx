@@ -1,9 +1,9 @@
-import { getCustomerLogos } from "@/content/queries"
+import { getContentForLogoWall } from "@/content/queries"
 import Clients from "./clients"
 
 const LogoWall = async () => {
-  const data = await getCustomerLogos()
-
-  return <Clients logos={data.assetCollection.items} />
+    const data = await getContentForLogoWall();
+    return <Clients content={data.assetCollection.items} />
 }
-export default LogoWall
+
+export default LogoWall;

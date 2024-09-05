@@ -6,9 +6,12 @@ import FeatureImg01 from '@/public/images/feature-image-01.png'
 import FeatureImg02 from '@/public/images/feature-image-02.png'
 import FeatureImg03 from '@/public/images/feature-image-03.png'
 
+import PlayerImg01 from '@/public/images/wbc/ba.jpeg';
+import PlayerImg02 from '@/public/images/wbc/westfield.jpeg';
+
 export default function Features02() {
   return (
-    <section className="relative">
+    <section id="new_players" className="relative">
 
       {/* Particles animation */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 w-80 h-80 -mt-24 -ml-32">
@@ -20,8 +23,10 @@ export default function Features02() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">Faster. Smarter.</h2>
-            <p className="text-lg text-slate-400">There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+            <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">New Players</h2>
+            <p className="text-lg text-slate-400">The chance to play a competitive game with a diverse group of friendly people</p>
+            <p className="text-lg text-slate-400">Watford Badminton Club is by far the largest badminton club in the area, with the most diverse range of events.  </p>
+            
           </div>
 
           {/* Highlighted boxes */}
@@ -66,21 +71,21 @@ export default function Features02() {
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8 md:pr-0">
                         <div className="mb-5">
                           <div>
-                            <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Optimized for security</h3>
-                            <p className="text-slate-400">Optimize for user experience and privacy. Use social login integrations, lower user friction, incorporate rich user profiling, and facilitate more transactions.</p>
+                            <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">If you've played a bit ....... give us a call</h3>
+                            <p className="text-slate-400"> It was formed in April 2011, playing once a week. Due to the popularity, a second evening was arranged from January 2012 and a third session was added in January 2013. All three sessions take place in centrally loacted sports halls.</p>
                           </div>
                         </div>
                         <div>
                           <a className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="#0">
                             <span className="relative inline-flex items-center">
-                              Learn more <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                              Get in touch <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                             </span>
                           </a>
                         </div>
                       </div>
                       {/* Image */}
                       <div className="relative w-full h-64 md:h-auto overflow-hidden">
-                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0{md}transla{}-x-0" src={FeatureImg01} width="504" height="400" alt="Feature 01" />
+                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:relative md:left-0{md}transla{}-x-0" src={PlayerImg02} width="504" height="400" alt="Feature 01" />
                       </div>
                     </div>
                   </div>
@@ -99,12 +104,13 @@ export default function Features02() {
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
                         <div>
                           <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Extensibility</h3>
-                          <p className="text-slate-400">Your login box must find the right balance between user convenience, privacy and security.</p>
+                          <p className="text-slate-400">
+                          This is by far the most active club in the area with a diverse range of events, catering for enthusiastic players of intermediate standard or better.  All sessions are extremely well organised, using an online booking system to optimise the outstanding facilities.  There are various membership arrangements available, all representing excellent value.</p>
                         </div>
                       </div>
                       {/* Image */}
                       <div className="relative w-full h-64 md:h-auto overflow-hidden md:pb-8">
-                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={FeatureImg02} width={536} height={230} alt="Feature 02" />
+                        <Image className="absolute bottom-0 left-1/2 -translate-x-1/2 mx-auto max-w-none md:max-w-full md:relative md:left-0 md:translate-x-0" src={PlayerImg01} width={536} height={230} alt="Feature 02" />
                       </div>
                     </div>
                   </div>
@@ -122,8 +128,8 @@ export default function Features02() {
                       {/* Text */}
                       <div className="md:max-w-[480px] shrink-0 order-1 md:order-none p-6 pt-0 md:p-8">
                         <div>
-                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Infinite options</h3>
-                          <p className="text-slate-400">Quickly apply filters to refine your issues lists and create custom views.</p>
+                          <h3 className="inline-flex text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-1">Options</h3>
+                          <p className="text-slate-400">We welcome enthusiastic new participants into the the sessions, as space allows. We are currently close to capacity, however if you are a committed individual that wishes to play regularly, drop us an email with details of your background.  Additionally if you are a woman of reasonable standard, get in touch.</p>
                         </div>
                       </div>
                       {/* Image */}

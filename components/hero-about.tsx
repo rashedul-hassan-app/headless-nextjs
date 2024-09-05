@@ -3,6 +3,7 @@ import Particles from './particles'
 import Illustration from '@/public/images/page-illustration.svg'
 import AboutIllustration from '@/public/images/about-illustration.svg'
 import Icon from '@/public/images/about-icon.svg'
+import LogoWbc from '@/public/images/logo_wbc.png'
 
 export default function HeroAbout() {
   return (
@@ -27,18 +28,18 @@ export default function HeroAbout() {
 
         {/* Hero content */}
         <div className="text-center">
-          <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">The folks behind the product</div>
-          <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">Turning security into innovation</h1>
+          <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">A welcoming group of competitive badminton players that also like to have fun</div>
+          <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-6">WBC</h1>
           {/* Rings illustration */}
           <div className="inline-flex items-center justify-center relative">
             {/* Particles animation */}
             <div className="absolute inset-0 -z-10" aria-hidden="true">
               <canvas data-particle-animation data-particle-quantity="10"></canvas>
             </div>
-            <div className="inline-flex [mask-image:_radial-gradient(circle_at_bottom,transparent_15%,black_70%)]">
+            <div className="inline-flex [mask-image:_radial-gradient(circle_aMont_bottom,transparent_15%,black_70%)]">
               <Image src={AboutIllustration} width={446} height={446} alt="About illustration" />
             </div>
-            <Image className="absolute mt-[30%] drop-shadow-lg animate-float" src={Icon} width={72} height={72} alt="About icon" />
+            <Image className="absolute mt-[30%] drop-shadow-lg animate-float" src={LogoWbc} width={272} height={272} alt="WBC icon" />
           </div>
         </div>
 

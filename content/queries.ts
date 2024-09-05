@@ -1,179 +1,156 @@
-import "server-only"
-import { contentGQLQuery } from "./fetch"
-import {
-  CustomerLogosQuery,
-  HeroContentQuery,
-  NavsQuery,
-  CustomerPostSlugsQuery,
-  CusomterPostQuery,
-} from "@/types"
+import "server-only";
+import { CustomerPostQuery, HeaderNavQuery, HeroQuery, LogoWallQuery } from "@/types";
+import { contentGqlFetcher } from "./fetch";
 
-export const getCusomterPost = async (slug: string, isDraft = false) => {
-  const query = `#graphql
-    query CustomerPost($where: CustomerPostFilter, $limit: Int) {
-      customerPostCollection(where: $where, limit: $limit, preview: ${
-        isDraft ? "true" : "false"
-      }) {
-        items {
-          slug
-          name
-          title
-          body {
-            json
-          }
-          customer {
+export const getSlugsForPosts = async () => {
+    const query = `#graphql
+    {
+        customerPostCollection {
+            items {
+                slug
+            }
+        }
+    }
+
+    `
+
+    const data = await contentGqlFetcher<{
+        customerPostCollection: {
+            items: {
+                slug: string
+            }[]
+        }
+    }>({query})
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
+    }
+    return data;
+}
+
+export const getContentForCustomerPost = async (slug: string) => {
+    const query = `#graphql
+    query CustomerPostCollection($where: CustomerPostFilter) {
+        customerPostCollection(where: $where) {
+                items {
+                title
+                body {
+                    json
+                }
+                customer {
+                    logo {
+                    height
+                    url
+                    width
+                    }
+                    name
+                }
+                slug
+                }
+            }
+        }
+    `
+
+    const data = await contentGqlFetcher<CustomerPostQuery>({
+        query,
+        variables: {
+            where: {
+                slug
+            }
+        }
+    })
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
+    }
+    return data;
+};
+
+export const getContentForHeaderNav = async () => {
+    const query = `#graphql
+    query NavigationCollection($where: NavigationFilter) {
+        navigationCollection(where: $where) {
+            items {
             name
-            logo {
-              url
-              width
-              title
-              height
+            linksCollection {
+                items {
+                link
+                label
+                }
+            }
+            }
+        }
+        }
+        `
+
+    const data = await contentGqlFetcher<HeaderNavQuery>({
+    query,
+    variables: {
+        where: {
+            name: "Header"
+         }
+        }
+    })
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
+    }
+    return data;    
+};
+
+export const getContentForLogoWall = async () => {
+    const query = `#graphql
+        query Asset($where: AssetFilter) {
+            assetCollection(where: $where) {
+                items {
+                height
+                width
+                url
+                title
+                }
+            }
+    }
+    `
+    const data = await contentGqlFetcher<LogoWallQuery>({
+        query,
+        variables: {
+            where: {
+              title_contains: "client"
             }
           }
-        }
-      }
+    })
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
     }
-  `
-
-  const data = await contentGQLQuery<CusomterPostQuery>({
-    query,
-    revalidate: 30,
-    variables: {
-      where: {
-        slug,
-      },
-      limit: 1,
-    },
-  })
-
-  if (!data) {
-    throw new Error("oops")
-  }
-
-  return data
+    return data;
 }
 
-export const getCustomerPostsSlugs = async (isDraft = false) => {
-  const query = `#graphql
-    query CustomerPostCollection {
-      customerPostCollection {
-        items {
-          slug
-        }
-      }
-    }
-  `
-
-  const data = await contentGQLQuery<CustomerPostSlugsQuery>({
-    query,
-    revalidate: 30,
-  })
-
-  if (!data) {
-    throw new Error("oops")
-  }
-
-  return data
-}
-
-export const getCustomerLogos = async (isDraft = false) => {
-  const query = `#graphql
-  query Query($where: AssetFilter) {
-    assetCollection(where: $where, preview: ${isDraft ? "true" : "false"}) {
-      items {
-        url
-        width
-        title
-        height
-      }
-    }
-  }
-  `
-  const data = await contentGQLQuery<CustomerLogosQuery>({
-    query,
-    revalidate: 30,
-    variables: {
-      limit: 1,
-      where: {
-        fileName_contains: "customer",
-      },
-    },
-  })
-
-  if (!data) {
-    throw new Error("oops")
-  }
-
-  return data
-}
-
-export const getMainNav = async (isDraft = false) => {
-  const query = `#graphql
-    query Navigation($where: NavigationFilter, $limit: Int) {
-      navs:navigationCollection(where: $where, limit: $limit, preview: ${
-        isDraft ? "true" : "false"
-      }) {
-        items {
-          links:linksCollection {
+export const getContentForHero = async (isDraft = false) => {
+    const query = `#graphql
+    query HeroCollection {
+        heroCollection(preview: ${isDraft ? "true" : "false"}) {
             items {
-              route
-              label
+            title
+            preTitle
+            subtitle
+            callToActionsCollection {
+                items {
+                link
+                label
+                }
             }
-          }
-        }
-      }
-    }
-  `
-
-  const data = await contentGQLQuery<NavsQuery>({
-    query,
-    revalidate: 30,
-    variables: {
-      limit: 1,
-      where: {
-        name_contains: "desktop",
-      },
-    },
-  })
-
-  if (!data) {
-    throw new Error("oops")
-  }
-
-  return data
-}
-
-export const getHeroContent = async (isDraft = false) => {
-  const query = `#graphql
-    query HeroSectionCollection($limit: Int) {
-      content:heroSectionCollection(limit: $limit, preview: ${
-        isDraft ? "true" : "false"
-      }) {
-        items {
-          title
-          subtitle
-          preTitle
-          ctas:callToActionsCollection {
-            items {
-              route
-              label
             }
-          }
         }
-      }
     }
-  `
-  const data = await contentGQLQuery<HeroContentQuery>({
-    query,
-    revalidate: 30,
-    preview: isDraft,
-    variables: {
-      limit: 1,
-    },
-  })
-  if (!data) {
-    throw new Error("oops")
-  }
+    `
 
-  return data
+    const data = await contentGqlFetcher<HeroQuery>({query, preview: isDraft})
+    
+
+    if (!data) {
+        throw new Error('Failed to fetch API, cant get content');
+    }
+
+    return data;
 }

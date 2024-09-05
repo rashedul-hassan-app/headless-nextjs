@@ -1,33 +1,26 @@
 export const metadata = {
   title: "Customer Post - Stellar",
   description: "Page description",
-}
+};
 
-import Link from "next/link"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Image from "next/image"
-import Illustration from "@/public/images/page-illustration.svg"
-import CustomerBadge from "@/public/images/customer-badge.svg"
-import Particles from "@/components/particles"
-import RelatedPosts from "./related-posts"
-import { getCusomterPost, getCustomerPostsSlugs } from "@/content/queries"
-import { notFound } from "next/navigation"
+import Link from "next/link";
+import Image from "next/image";
+import Illustration from "@/public/images/page-illustration.svg";
+import CustomerBadge from "@/public/images/customer-badge.svg";
+import Particles from "@/components/particles";
+import RelatedPosts from "./related-posts";
+import { getContentForCustomerPost, getSlugsForPosts } from "@/content/queries";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-export async function generateStaticParams() {
-  const data = await getCustomerPostsSlugs()
-
-  return data.customerPostCollection.items.map((post) => ({
-    slug: post.slug,
-  }))
+export const generateStaticParams = async () => {
+  const data = await getSlugsForPosts();
+  return data.customerPostCollection.items;
 }
 
 export default async function CustomerSingle({ params }) {
-  const data = await getCusomterPost(params.slug)
-  const post = data.customerPostCollection.items[0]
-
-  if (!post) {
-    notFound()
-  }
+  const data = await getContentForCustomerPost(params.slug);
+  const content = data.customerPostCollection.items[0];
+  console.log(content);
 
   return (
     <section className="relative">
@@ -78,7 +71,7 @@ export default async function CustomerSingle({ params }) {
 
                   <header>
                     <h1 className="h2 inline-flex bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-                      {post.title}
+                      {content.title}
                     </h1>
                     <div className="text-sm flex items-center space-x-4 mb-8">
                       <img
@@ -90,7 +83,7 @@ export default async function CustomerSingle({ params }) {
                       />
                       <div>
                         <div className="text-slate-300 font-medium">
-                          Becky Taylor
+                          Json Taylor
                         </div>
                         <div className="text-slate-500">
                           Product Marketing Manager
@@ -101,8 +94,8 @@ export default async function CustomerSingle({ params }) {
 
                   {/* Post content */}
                   <div className="prose max-w-none text-slate-400 prose-headings:text-slate-50 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-p:leading-relaxed prose-a:text-purple-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-50 prose-strong:font-medium prose-blockquote:pl-5 prose-blockquote:xl:-ml-5 prose-blockquote:border-l-2 prose-blockquote:border-purple-500 prose-blockquote:font-medium prose-blockquote:text-slate-300 prose-blockquote:italic">
-                    {documentToReactComponents(post.body.json)}
-                  </div>
+					{documentToReactComponents(content.body.json)}
+				  </div>
                 </article>
 
                 <RelatedPosts />
@@ -126,7 +119,7 @@ export default async function CustomerSingle({ params }) {
                             alt="Customer badge"
                           />
                           <div className="text-lg font-semibold text-slate-100">
-                            Airbnb Inc.
+                            {content.customer.name}
                           </div>
                         </div>
                       </div>
@@ -182,5 +175,5 @@ export default async function CustomerSingle({ params }) {
         </div>
       </div>
     </section>
-  )
+  );
 }

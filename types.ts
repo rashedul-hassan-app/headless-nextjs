@@ -1,67 +1,64 @@
-export type CusomterPostQuery = {
-  customerPostCollection: {
-    items: {
-      slug: string
-      name: string
-      title: string
-      body: {
-        json: JSON
-      }
-      customer: {
-        name: string
-        logo: {
-          url: string
-          width: string
-          title: string
-          height: string
-        }
-      }
-    }[]
-  }
-}
-export type CustomerPostSlugsQuery = {
-  customerPostCollection: {
-    items: {
-      slug: string
-    }[]
-  }
-}
-export type CustomerLogosQuery = {
-  assetCollection: {
-    items: {
-      url: string
-      title: string
-      width: number
-      height: number
-    }[]
-  }
+export type CustomerPostQuery = {
+    customerPostCollection:{
+        items: {
+            title: string
+            slug: string
+            body: {
+                json: JSON
+            }
+            customer: {
+                logo: {
+                    height: number
+                    url: string
+                    width: number
+                }
+                name: string
+            }
+        }[]
+    }
+};
+
+export type HeaderNavQuery = {
+    navigationCollection: {
+        items: {
+            name: string
+            linksCollection: {
+                items: {
+                    link: string
+                    label: string
+                }[]
+            }
+        }[]
+    }
 }
 
-export type HeroContentQuery = {
-  content: {
-    items: {
-      title: string
-      subtitle: string
-      preTitle: string
-      ctas: {
+
+
+export type LogoWallQuery = {
+    assetCollection: {
         items: {
-          route: string
-          label: string
+            height: number
+            width: number
+            url: string
+            title: string
         }[]
-      }
-    }[]
-  }
+    }
 }
 
-export type NavsQuery = {
-  navs: {
-    items: {
-      links: {
-        items: {
-          route: string
-          label: string
+
+export type HeroQuery = {
+    heroCollection: {
+        items : {
+            title: string
+            preTitle: string
+            subtitle: string
+            callToActionsCollection: {
+                items: {
+                link: string
+                label: string
+                }[]
+            }
         }[]
-      }
-    }[]
-  }
+    }
 }
+
